@@ -17,20 +17,20 @@ public class Calculator {
 
         switch (operator) {
             case '+':
-                System.out.println(a + b);
+                System.out.println("Result is: " + (a + b));
                 break;
 
             case '-':
-                    System.out.println(a - b);
+                System.out.println("Result is: " + (a - b));
                     break;
 
             case '*':
-                System.out.println(a * b);
+                System.out.println("Result is: " + (a * b));
                 break;
 
             case '/':
                  if (b != 0) {
-                    System.out.println(a / b);
+                     System.out.println("Result is: " + (a / b));
                  } else {
                      System.out.println("ERROR: Cannot divide by zero!");
                  }
@@ -38,7 +38,7 @@ public class Calculator {
 
             case '%':
                  if (b != 0) {
-                     System.out.println(a % b);
+                     System.out.println("Result is: " + (a % b));
                  } else {
                     System.out.println("ERROR: Cannot divide by zero!");
                  }
