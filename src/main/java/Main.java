@@ -8,13 +8,11 @@ public class Main {
         System.out.println("Enter first number:");
         boolean isDouble = scanner.hasNextDouble();
 
-
         if(isDouble) {
             double a = scanner.nextDouble();
             scanner.nextLine();
 
             System.out.println("Enter operator:");
-
             String s = scanner.nextLine();
 
             if((s.equals("+")) || (s.equals("-")) || (s.equals("*")) || (s.equals("/")) || (s.equals("%"))) {
@@ -25,22 +23,13 @@ public class Main {
 
                 if(isDouble) {
                     double b = scanner.nextDouble();
-
                     Calculation.perform(a, operator, b);
-
-
                 } else {
                     System.out.println("Invalid input");
                 }
-
-
-
             } else {
                 System.out.println("Invalid operator");
             }
-
-
-
         } else {
             System.out.println("Invalid input");
         }
