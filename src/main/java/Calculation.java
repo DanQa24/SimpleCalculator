@@ -1,34 +1,36 @@
 public class Calculation {
 
-    public static void perform(double a, char operator, double b) {
+    private double calculationResult;
+
+    public void perform(double a, char operator, double b) {
         switch (operator) {
             case '+':
-                System.out.println("Result is: " + (a + b));
+                calculationResult = (a + b);
                 break;
-
             case '-':
-                System.out.println("Result is: " + (a - b));
+                calculationResult = (a - b);
                 break;
-
             case '*':
-                System.out.println("Result is: " + (a * b));
+                calculationResult = (a * b);
                 break;
-
             case '/':
                 if (b != 0) {
-                    System.out.println("Result is: " + (a / b));
+                    calculationResult = (a / b);
                 } else {
-                    System.out.println("ERROR: Cannot divide by zero!");
+                    System.out.println("Error: Cannot divide by zero");
                 }
                 break;
-
             case '%':
                 if (b != 0) {
-                    System.out.println("Result is: " + (a % b));
+                    calculationResult = (a % b);
                 } else {
-                    System.out.println("ERROR: Cannot divide by zero!");
+                    System.out.println("Error: Cannot divide by zero");
                 }
                 break;
         }
+    }
+
+    public void printResult() {
+        System.out.println("Result is: " + calculationResult);
     }
 }
