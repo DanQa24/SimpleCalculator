@@ -1,28 +1,34 @@
 public class Calculation {
 
-    private double calculationResult;
+    public double calculationResult;
 
     public void perform(double a, char operator, double b) {
+        String result;
         switch (operator) {
             case '+':
-                calculationResult = (a + b);
+                result = String.format("%.2f", (a + b));
+                calculationResult = Double.parseDouble(result);
                 break;
             case '-':
-                calculationResult = (a - b);
+                result = String.format("%.2f", (a - b));
+                calculationResult = Double.parseDouble(result);
                 break;
             case '*':
-                calculationResult = (a * b);
+                result = String.format("%.2f", (a * b));
+                calculationResult = Double.parseDouble(result);
                 break;
             case '/':
                 if (b != 0) {
-                    calculationResult = (a / b);
+                    result = String.format("%.2f", (a / b));
+                    calculationResult = Double.parseDouble(result);
                 } else {
                     System.out.println("Error: Cannot divide by zero");
                 }
                 break;
             case '%':
                 if (b != 0) {
-                    calculationResult = (a % b);
+                    result = String.format("%.2f", (a % b));
+                    calculationResult = Double.parseDouble(result);
                 } else {
                     System.out.println("Error: Cannot divide by zero");
                 }

@@ -6,6 +6,6 @@ public class Main {
 
         Calculation calculation = new Calculation();
         calculation.perform(reader.a, reader.operator, reader.b);
-        calculation.printResult();
+        //calculation.printResult();
     }
 }
