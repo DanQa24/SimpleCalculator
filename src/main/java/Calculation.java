@@ -1,42 +1,41 @@
+
 public class Calculation {
 
     public double calculationResult;
 
     public void perform(double a, char operator, double b) {
-        String result;
         switch (operator) {
             case '+':
-                result = String.format("%.2f", (a + b));
-                calculationResult = Double.parseDouble(result);
+                calculationResult = (a + b);
                 break;
             case '-':
-                result = String.format("%.2f", (a - b));
-                calculationResult = Double.parseDouble(result);
+                calculationResult = (a - b);
+
                 break;
             case '*':
-                result = String.format("%.2f", (a * b));
-                calculationResult = Double.parseDouble(result);
+                calculationResult = (a * b);
+
                 break;
             case '/':
-                if (b != 0) {
-                    result = String.format("%.2f", (a / b));
-                    calculationResult = Double.parseDouble(result);
-                } else {
-                    System.out.println("Error: Cannot divide by zero");
+                calculationResult = (a / b);
+                if ((Double.isInfinite(calculationResult)) && (a < 0)) {
+                    calculationResult = Double.NEGATIVE_INFINITY;
                 }
+                if ((Double.isInfinite(calculationResult)) && (a > 0)) {
+                    calculationResult = Double.POSITIVE_INFINITY;
+                }
+                if ((Double.isNaN(calculationResult)) && (a == 0)) {
+                    calculationResult = Double.NaN;
+                }
+
                 break;
             case '%':
-                if (b != 0) {
-                    result = String.format("%.2f", (a % b));
-                    calculationResult = Double.parseDouble(result);
-                } else {
-                    System.out.println("Error: Cannot divide by zero");
+                calculationResult = (a % b);
+                // One of the operations generating NaN: Remainder x % y (when x is an infinity OR y is zero).
+                if (Double.isNaN(calculationResult)) {
+                    calculationResult = Double.NaN;
                 }
                 break;
         }
-    }
-
-    public void printResult() {
-        System.out.println("Result is: " + calculationResult);
     }
 }

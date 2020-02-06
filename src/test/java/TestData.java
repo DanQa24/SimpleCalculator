@@ -40,7 +40,7 @@ public class TestData {
                 {15, '/', -2, -7.5},
                 {-10, '/', 5, -2},
                 {-25, '/', -5, 5},
-                {10, '/', 35, 0.29}
+                {10, '/', 35, 0.29},
         };
     }
 
@@ -49,7 +49,19 @@ public class TestData {
         return new Object[][] {
                 {20, '%', 6, 2},
                 {25, '%', 7, 4},
-                {8, '%', 2, 0}
+                {8, '%', 2, 0},
         };
     }
+
+    @DataProvider(name = "divide-by-zero")
+    public static Object[][] divideByZero(){
+        return new Object[][] {
+                {5.5, '/', 0, Double.POSITIVE_INFINITY},
+                {-8, '/', 0, Double.NEGATIVE_INFINITY},
+                {0, '/', 0, Double.NaN},
+                {7.5, '%', 0, Double.NaN},
+                {-12, '%', 0, Double.NaN}
+        };
+    }
+
 }

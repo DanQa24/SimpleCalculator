@@ -45,4 +45,14 @@ public class CalculationTest {
         Assert.assertEquals(calculation.calculationResult, expectedResult);
     }
 
+
+    // Tests with invalid values
+
+    @Test (dataProvider = "divide-by-zero", dataProviderClass = TestData.class, priority = 6)
+    public void divideByZero(double a, char operator, double b, Double expectedResult) {
+        Calculation calculation = new Calculation();
+        calculation.perform(a, operator, b);
+
+        Assert.assertEquals(calculation.calculationResult, expectedResult);
+    }
 }
