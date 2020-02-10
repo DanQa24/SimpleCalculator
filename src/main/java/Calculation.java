@@ -1,39 +1,38 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 
 public class Calculation {
 
-    public double calculationResult;
+    public BigDecimal calculationResult;
 
-    public void perform(double a, char operator, double b) {
+    public void perform(String a, char operator, String b) {
+        BigDecimal valueA = BigDecimal.valueOf(Double.parseDouble(a));
+        BigDecimal valueB = BigDecimal.valueOf(Double.parseDouble(b));
         switch (operator) {
+
             case '+':
-                calculationResult = (a + b);
+                calculationResult = valueA.add(valueB);
                 break;
+
             case '-':
-                calculationResult = (a - b);
-
+                calculationResult = valueA.subtract(valueB);
                 break;
-            case '*':
-                calculationResult = (a * b);
 
+            case '*':
+                calculationResult = valueA.multiply(valueB);
                 break;
             case '/':
-                calculationResult = (a / b);
-                if ((Double.isInfinite(calculationResult)) && (a < 0)) {
-                    calculationResult = Double.NEGATIVE_INFINITY;
-                }
-                if ((Double.isInfinite(calculationResult)) && (a > 0)) {
-                    calculationResult = Double.POSITIVE_INFINITY;
-                }
-                if ((Double.isNaN(calculationResult)) && (a == 0)) {
-                    calculationResult = Double.NaN;
-                }
+                calculationResult = valueA.divide(valueB, 4, RoundingMode.HALF_UP);
 
-                break;
-            case '%':
-                calculationResult = (a % b);
-                // One of the operations generating NaN: Remainder x % y (when x is an infinity OR y is zero).
-                if (Double.isNaN(calculationResult)) {
-                    calculationResult = Double.NaN;
+                if (Double.isInfinite(calculationResult.doubleValue()) && (valueA.signum() < 0)) {
+                    calculationResult = BigDecimal.valueOf(Double.NEGATIVE_INFINITY);
+                }
+                if (Double.isInfinite(calculationResult.doubleValue()) && (valueA.signum() > 0)) {
+                    calculationResult = BigDecimal.valueOf(Double.POSITIVE_INFINITY);
+                }
+                if ((Double.isNaN(calculationResult.doubleValue())) && (valueA.signum() == 0)) {
+                    calculationResult = BigDecimal.valueOf(Double.NaN);
                 }
                 break;
         }
