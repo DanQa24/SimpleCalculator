@@ -4,37 +4,24 @@ import java.math.RoundingMode;
 
 public class Calculation {
 
-    public BigDecimal calculationResult;
+    public BigDecimal perform(BigDecimal a, char operator, BigDecimal b) {
 
-    public void perform(String a, char operator, String b) {
-        BigDecimal valueA = BigDecimal.valueOf(Double.parseDouble(a));
-        BigDecimal valueB = BigDecimal.valueOf(Double.parseDouble(b));
+        BigDecimal calculationResult = null;
+
         switch (operator) {
-
             case '+':
-                calculationResult = valueA.add(valueB);
+                calculationResult = a.add(b);
                 break;
-
             case '-':
-                calculationResult = valueA.subtract(valueB);
+                calculationResult = a.subtract(b);
                 break;
-
             case '*':
-                calculationResult = valueA.multiply(valueB);
+                calculationResult = a.multiply(b);
                 break;
             case '/':
-                calculationResult = valueA.divide(valueB, 4, RoundingMode.HALF_UP);
-
-                if (Double.isInfinite(calculationResult.doubleValue()) && (valueA.signum() < 0)) {
-                    calculationResult = BigDecimal.valueOf(Double.NEGATIVE_INFINITY);
-                }
-                if (Double.isInfinite(calculationResult.doubleValue()) && (valueA.signum() > 0)) {
-                    calculationResult = BigDecimal.valueOf(Double.POSITIVE_INFINITY);
-                }
-                if ((Double.isNaN(calculationResult.doubleValue())) && (valueA.signum() == 0)) {
-                    calculationResult = BigDecimal.valueOf(Double.NaN);
-                }
+                calculationResult = a.divide(b, 4, RoundingMode.HALF_UP);
                 break;
         }
+        return calculationResult;
     }
 }

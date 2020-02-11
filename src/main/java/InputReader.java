@@ -1,20 +1,18 @@
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class InputReader {
 
-    public double a;
-    public double b;
-    public char operator;
-
-    public void getUserInput() {
+    public InputResult getUserInput() {
         Scanner scanner = new Scanner(System.in);
+        InputResult result = new InputResult();
 
         System.out.println("Enter first number:");
         boolean isDouble = scanner.hasNextDouble();
 
         if(isDouble) {
-            double a = scanner.nextDouble();
-            this.a = a;
+            BigDecimal a = BigDecimal.valueOf(scanner.nextDouble());
+            result.setA(a);
             scanner.nextLine();
 
             System.out.println("Enter operator:");
@@ -22,14 +20,14 @@ public class InputReader {
 
             if((s.equals("+")) || (s.equals("-")) || (s.equals("*")) || (s.equals("/")) || (s.equals("%"))) {
                 char operator = s.charAt(0);
-                this.operator = operator;
+                result.setOperator(operator);
 
                 System.out.println("Enter second number:");
                 isDouble = scanner.hasNextDouble();
 
                 if(isDouble) {
-                    double b = scanner.nextDouble();
-                    this.b = b;
+                    BigDecimal b = BigDecimal.valueOf(scanner.nextDouble());
+                    result.setB(b);
                 } else {
                     System.out.println("Invalid input");
                 }
@@ -40,5 +38,7 @@ public class InputReader {
             System.out.println("Invalid input");
         }
         scanner.close();
+
+        return result;
     }
 }

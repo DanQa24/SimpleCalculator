@@ -1,11 +1,13 @@
+import java.math.BigDecimal;
+
 public class Main {
 
     public static void main(String[] args) {
         InputReader reader = new InputReader();
-        reader.getUserInput();
+        InputResult result = reader.getUserInput();
 
         Calculation calculation = new Calculation();
-        //calculation.perform(reader.a, reader.operator, reader.b);
-        //calculation.printResult();
+        BigDecimal calcResult = calculation.perform(result.getA(), result.getOperator(), result.getB());
+        System.out.println(calcResult);
     }
 }
